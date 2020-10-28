@@ -13,7 +13,10 @@ def upload_file(request):
         form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
             # file is saved
-            form.save()
+
+            uploaded_img = form.save(commit=False)
+            uploaded_img.image_data = form.cleaned_data['image'].file.read()
+            uploaded_img.save()
             return redirect('/')    # Why didn't 'index' work?
     else:
         form = UploadImageForm()

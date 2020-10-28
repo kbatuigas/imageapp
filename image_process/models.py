@@ -4,4 +4,5 @@ from django.db import models
 
 class ImageFile(models.Model):
     # https://docs.djangoproject.com/en/3.1/ref/models/fields/#filefield
-    file = models.FileField()
+    image = models.FileField()
+    image_data = models.BinaryField(null=True)
