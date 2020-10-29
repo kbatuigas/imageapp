@@ -6,5 +6,6 @@ app_name = 'image_process'
 urlpatterns = [
     path('', views.index, name='index'),
     path('upload/', views.upload_file, name="upload"),
+    path('browse/', views.browse_images, name="browse"),
 
 ]

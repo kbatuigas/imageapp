@@ -1,6 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .forms import UploadImageForm
+from .models import ImageFile
+
+import base64
 
 # Create your views here.
 
@@ -21,3 +25,11 @@ def upload_file(request):
     else:
         form = UploadImageForm()
     return render(request, 'image_process/upload.html', {'form': form})
+
+
+def browse_images(request):
+    # make new imagefile from DB
+    img = ImageFile.objects.get(pk=2)
+    response = HttpResponse(img.image_data, content_type="image/jpeg")
+
+    return response
