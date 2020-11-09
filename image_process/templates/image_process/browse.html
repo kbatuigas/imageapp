@@ -2,9 +2,16 @@
 
 {% block content %}
 <h1>View uploaded images</h1>
+    {% if images_all %}
+        {% load image_tags %}
     <div>
-        <img src=data:image/png;base64,{{ image }}">
-
-
+        <ul>
+            {% for image in results %}
+            <li>
+                <img src="data:image/jpg;base64,{{image}}">
+            </li>
+            {% endfor %}
+        </ul>
     </div>
+    {% endif %}
 {% endblock %}
