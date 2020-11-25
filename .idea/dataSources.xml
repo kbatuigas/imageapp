@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="image" uuid="17b58a4f-7b1a-4dac-8ace-03297db87a41">
+    <data-source source="LOCAL" name="linux_imagedb" uuid="17b58a4f-7b1a-4dac-8ace-03297db87a41">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://p.jip37jrksfb27klmzxr4mdkrdq.db.postgresbridge.com:5432/image_process</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/image</jdbc-url>
     </data-source>
   </component>
 </project>
