@@ -19,12 +19,21 @@ AS $BODY$
     img_array = np.array(Image.open(io.BytesIO(data)))
 
     # sigma=sigma applies the filter to each dimension,
-	# including the third axis that holds the color channel
-	# so we have to do sigma=(sigma, sigma, 0)
+    # including the third axis that holds the color channel
+    # so we have to pass in sigma=(sigma, sigma, 0) instead
     blurred = ndimage.gaussian_filter(img_array, sigma=(5, 5, 0))
 
-    # return in bytes format
-    return blurred.tobytes()
+    # Turn array back to Image
+    blurred_img = Image.fromarray(blurred)
+
+    # Create new in-memory file-like object
+    return_buffer = io.BytesIO()
+
+    # Save the image in the file-like object
+    blurred_img.save(return_buffer, "JPEG")
+
+    # Get bytes from object
+    return return_buffer.getvalue()
 
 $BODY$;
 
