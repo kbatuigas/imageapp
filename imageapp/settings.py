@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'imageapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'image',
+        'NAME': 'image_process',
         'USER': 'image_user',
         'PASSWORD': 'imagepass1',
         #'HOST': 'p.jip37jrksfb27klmzxr4mdkrdq.db.postgresbridge.com',

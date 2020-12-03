@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 
 from .forms import UploadImageForm
-from .models import ImageFile
+from .models import ImageFile, BlurredImage
 
 import base64
 import io
@@ -33,10 +33,30 @@ def upload_file(request):
 
 def view_image(request):
     # make new imagefile from DB
-    img = ImageFile.objects.get(pk=2)
+    img = ImageFile.objects.get(pk=1)
     response = HttpResponse(img.image_data, content_type="image/jpeg")
 
     return response
+
+
+def view_gbin(request):
+    # make new imagefile from DB
+    img = ImageFile.objects.get(pk=1)
+    return HttpResponse(img.image_data)
+
+
+def view_blurred(request):
+    # make new imagefile from DB
+    blurred = BlurredImage.objects.get(pk=1)
+    response = HttpResponse(blurred.img_binary, content_type="image/jpeg")
+
+    return response
+
+
+def view_binary(request):
+    blurred = BlurredImage.objects.get(pk=1)
+
+    return HttpResponse(blurred.img_binary)
 
 
 class ImageListView(generic.ListView):
